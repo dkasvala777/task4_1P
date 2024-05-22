@@ -73,13 +73,27 @@ public class LoginFormTest
 	    @Test
 	    public void testFailCorrectUsernameAndWrongPasswordAndDontCareValCode() {
 	        // Test case for correct username, wrong password, and don't care validation code
-	        LoginStatus status = LoginForm.login("correctUsername", "ahsan");
+	        LoginStatus status = LoginForm.login("ahsan", "ahsan");
 	        Assert.assertFalse(status.isLoginSuccess()); // Assert that login should fail
 	    }
 	    
 	    @Test
 	    public void testSuccessCorrectUsernameAndCorrectPasswordAndDontCareValCode() {
 	        // Test case for correct username, correct password, and don't care validation code
+	        LoginStatus status = LoginForm.login("ahsan", "ahsan_pass");
+	        Assert.assertTrue(status.isLoginSuccess()); // Assert that login should succeed
+	    }
+	    
+	    @Test
+	    public void testSuccessCorrectUsernameAndCorrectPasswordAndInValidLogin() {
+	        // Test case for correct username, correct password
+	        LoginStatus status = LoginForm.login("ahsan", "ahsan_pass");
+	        Assert.assertTrue(status.isLoginSuccess()); // Assert that login should fail
+	    }
+	    
+	    @Test
+	    public void testSuccessCorrectUsernameAndCorrectPasswordAndValidLogin() {
+	        // Test case for correct username, correct password
 	        LoginStatus status = LoginForm.login("ahsan", "ahsan_pass");
 	        Assert.assertTrue(status.isLoginSuccess()); // Assert that login should succeed
 	    }
